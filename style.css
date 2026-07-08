@@ -1,0 +1,222 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card > label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.line, .filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.line-btn {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 140px;
+}
+
+.field.half {
+    flex: 0.48;
+    min-width: 0;
+}
+
+.field label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+input, select {
+    padding: 6px 8px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.btn-primary {
+    background: #2f6fdb;
+    color: #fff;
+    border: none;
+    padding: 8px 80px;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 32px;
+}
+
+.btn-primary:hover { background: #2558b3; }
+
+.btn-primary:disabled {
+    background: #a5c0eb;
+    cursor: not-allowed;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.students-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.student-card {
+    border-radius: 4px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #aaa;
+}
+
+.student-card.active { background: #c8e6c9; }
+.student-card.inactive { background: #f5b7b1; }
+
+.student-card h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+}
+
+.student-card p {
+    margin: 2px 0;
+    font-size: 13px;
+}
+
+.actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #2f6fdb;
+}
+
+.actions button.delete { color: #c0392b; }
+
+input,
+select,
+textarea {
+    color: #999;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+.delete-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-window.show {
+    display: flex;
+}
+
+.delete-box {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    max-width: 420px;
+    width: 90%;
+    position: relative;
+}
+
+.delete-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+}
+
+.delete-title {
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: #333;
+}
+
+.delete-text {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.delete-btn {
+    padding: 8px 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.delete-btn.no {
+    background: #fff;
+    border: 1px solid #999;
+    color: #333;
+}
+
+.delete-btn.no:hover { background: #f0f0f0; }
+
+.delete-btn.yes {
+    background: #2f6fdb;
+    border: none;
+    color: #fff;
+}
+
+.delete-btn.yes:hover { background: #2558b3; }
