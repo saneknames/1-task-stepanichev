@@ -1,4 +1,7 @@
-* { box-sizing: border-box; font-family: Arial, sans-serif; }
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
 body {
     margin: 0;
@@ -15,11 +18,11 @@ body {
     border-radius: 4px;
     padding: 20px;
     margin-bottom: 20px;
-}
 
-.card > label {
-    display: block;
-    margin-bottom: 15px;
+    & > label {
+        display: block;
+        margin-bottom: 15px;
+    }
 }
 
 .line,
@@ -42,20 +45,21 @@ body {
     flex-direction: column;
     flex: 1;
     min-width: 140px;
+
+    &.half {
+        flex: 0.48;
+        min-width: 0;
+    }
+
+    & label {
+        font-size: 12px;
+        margin-bottom: 4px;
+        color: #333;
+    }
 }
 
-.field.half {
-    flex: 0.48;
-    min-width: 0;
-}
-
-.field label {
-    font-size: 12px;
-    margin-bottom: 4px;
-    color: #333;
-}
-
-input, select {
+input,
+select {
     padding: 6px 8px;
     border: 1px solid #999;
     border-radius: 3px;
@@ -70,13 +74,15 @@ input, select {
     border-radius: 3px;
     cursor: pointer;
     height: 32px;
-}
 
-.button-primary:hover { background: #2558b3; }
+    &:hover {
+        background: #2558b3;
+    }
 
-.button-primary:disabled {
-    background: #a5c0eb;
-    cursor: not-allowed;
+    &:disabled {
+        background: #a5c0eb;
+        cursor: not-allowed;
+    }
 }
 
 .check {
@@ -98,19 +104,24 @@ input, select {
     margin-bottom: 10px;
     position: relative;
     border: 1px solid #aaa;
-}
 
-.student-card.active { background: #c8e6c9; }
-.student-card.inactive { background: #f5b7b1; }
+    &.active {
+        background: #c8e6c9;
+    }
 
-.student-card h3 {
-    margin: 0 0 8px;
-    font-size: 14px;
-}
+    &.inactive {
+        background: #f5b7b1;
+    }
 
-.student-card p {
-    margin: 2px 0;
-    font-size: 13px;
+    & h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+    }
+
+    & p {
+        margin: 2px 0;
+        font-size: 13px;
+    }
 }
 
 .actions {
@@ -119,17 +130,19 @@ input, select {
     right: 12px;
     display: flex;
     gap: 10px;
-}
 
-.actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #2f6fdb;
-}
+    & button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #2f6fdb;
 
-.actions button.delete { color: #c0392b; }
+        &.delete {
+            color: #c0392b;
+        }
+    }
+}
 
 input,
 select,
@@ -153,10 +166,10 @@ textarea::placeholder {
     display: none;
     align-items: center;
     justify-content: center;
-}
 
-.delete-window.show {
-    display: flex;
+    &.show {
+        display: flex;
+    }
 }
 
 .delete-box {
@@ -167,63 +180,67 @@ textarea::placeholder {
     max-width: 420px;
     width: 90%;
     position: relative;
-}
 
-.delete-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #999;
-    cursor: pointer;
-}
+    & .delete-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 16px;
+        color: #999;
+        cursor: pointer;
+    }
 
-.delete-title {
-    margin: 0 0 12px;
-    font-size: 16px;
-    color: #333;
-}
+    & .delete-title {
+        margin: 0 0 12px;
+        font-size: 16px;
+        color: #333;
+    }
 
-.delete-text {
-    margin: 0 0 20px;
-    font-size: 13px;
-    color: #333;
-    line-height: 1.5;
-    text-align: justify;
-}
+    & .delete-text {
+        margin: 0 0 20px;
+        font-size: 13px;
+        color: #333;
+        line-height: 1.5;
+        text-align: justify;
+    }
 
-.delete-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
+    & .delete-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
 
-.delete-button {
-    padding: 8px 24px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 13px;
-}
+        & .delete-button {
+            padding: 8px 24px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 13px;
 
-.delete-button.no {
-    background: #fff;
-    border: 1px solid #999;
-    color: #333;
-}
+            &.no {
+                background: #fff;
+                border: 1px solid #999;
+                color: #333;
 
-.delete-button.no:hover { background: #f0f0f0; }
+                &:hover {
+                    background: #f0f0f0;
+                }
+            }
 
-.delete-button.yes {
-    background: #2f6fdb;
-    border: none;
-    color: #fff;
+            &.yes {
+                background: #2f6fdb;
+                border: none;
+                color: #fff;
+
+                &:hover {
+                    background: #2558b3;
+                }
+            }
+        }
+    }
 }
 
 .button-cancel {
     display: none;
     margin-left: 10px;
 }
-
-.delete-button.yes:hover { background: #2558b3; }
