@@ -22,7 +22,8 @@ body {
     margin-bottom: 15px;
 }
 
-.line, .filters {
+.line,
+.filters {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -190,6 +191,7 @@ textarea::placeholder {
     font-size: 13px;
     color: #333;
     line-height: 1.5;
+    text-align: justify;
 }
 
 .delete-buttons {

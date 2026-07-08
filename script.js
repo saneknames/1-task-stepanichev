@@ -59,7 +59,9 @@ function validateForm() {
 
     let valid = true;
 
-    if (!isValidName(lastName)) valid = false;
+    if (!isValidName(lastName)) {
+        valid = false
+    }
     if (!isValidName(firstName)) valid = false;
     if (enrollmentType === '') valid = false;
     if (!isValidScore(avgScore)) valid = false;
