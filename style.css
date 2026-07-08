@@ -31,7 +31,7 @@ body {
     margin-bottom: 10px;
 }
 
-.line-btn {
+.line-button {
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
@@ -62,7 +62,7 @@ input, select {
     background: #fff;
 }
 
-.btn-primary {
+.button-primary {
     background: #2f6fdb;
     color: #fff;
     border: none;
@@ -72,9 +72,9 @@ input, select {
     height: 32px;
 }
 
-.btn-primary:hover { background: #2558b3; }
+.button-primary:hover { background: #2558b3; }
 
-.btn-primary:disabled {
+.button-primary:disabled {
     background: #a5c0eb;
     cursor: not-allowed;
 }
@@ -200,25 +200,30 @@ textarea::placeholder {
     gap: 10px;
 }
 
-.delete-btn {
+.delete-button {
     padding: 8px 24px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 13px;
 }
 
-.delete-btn.no {
+.delete-button.no {
     background: #fff;
     border: 1px solid #999;
     color: #333;
 }
 
-.delete-btn.no:hover { background: #f0f0f0; }
+.delete-button.no:hover { background: #f0f0f0; }
 
-.delete-btn.yes {
+.delete-button.yes {
     background: #2f6fdb;
     border: none;
     color: #fff;
 }
 
-.delete-btn.yes:hover { background: #2558b3; }
+.button-cancel {
+    display: none;
+    margin-left: 10px;
+}
+
+.delete-button.yes:hover { background: #2558b3; }

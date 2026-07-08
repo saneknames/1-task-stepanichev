@@ -8,19 +8,25 @@
 <body>
     <div class="page">
         <fieldset class="card">
-            <label>Добавление студента</label>
+            <label id="formTitle">Добавление студента</label>
             <div class="line">
                 <div class="field">
                     <label>Фамилия</label>
-                    <input type="text" id="lastName" placeholder="Введите фамилию...">
+                    <input type="text"
+                           id="lastName"
+                           placeholder="Введите фамилию...">
                 </div>
                 <div class="field">
                     <label>Имя</label>
-                    <input type="text" id="firstName" placeholder="Введите имя">
+                    <input type="text"
+                           id="firstName"
+                           placeholder="Введите имя...">
                 </div>
                 <div class="field">
                     <label>Отчество</label>
-                    <input type="text" id="middleName" placeholder="Введите отчество">
+                    <input type="text"
+                           id="middleName"
+                           placeholder="Введите отчество...">
                 </div>
             </div>
             <div class="line">
@@ -35,19 +41,33 @@
                 </div>
                 <div class="field half">
                     <label>Средний балл</label>
-                    <input type="number" step="0.1" id="avgScore" min="2" max="5" placeholder="Введите средний балл">
+                    <input type="number"
+                           step="0.1"
+                           id="avgScore"
+                           min="2" max="5"
+                           placeholder="Введите средний балл...">
                 </div>
                 <div class="field half">
                     <label>Номер телефона</label>
-                    <input type="text" id="phone" placeholder="Введите номер телефона">
+                    <input type="text"
+                           id="phone"
+                           placeholder="Введите номер телефона...">
                 </div>
                 <div class="field">
                     <label>Дата рождения</label>
-                    <input type="text" id="birthDate" placeholder="Введите дату рождения">
+                    <input type="date"
+                           id="birthDate">
                 </div>
             </div>
-            <div class="line-btn">
-                <button id="saveBtn" class="btn-primary">Добавить</button>
+            <div class="line-button">
+                <button id="saveButton"
+                        class="button-primary">
+                        Добавить
+                </button>
+                <button id="cancelButton"
+                        class="button-cancel">
+                        Отменить
+                </button>
             </div>
         </fieldset>
 
@@ -65,7 +85,9 @@
                 </div>
                 <div class="field">
                     <label>Поиск по ФИО</label>
-                    <input type="text" id="searchFio" placeholder="Введите ФИО">
+                    <input type="text"
+                           id="searchFio"
+                           placeholder="Введите ФИО...">
                 </div>
                 <div class="field">
                     <label>Сортировка по ср.баллу</label>
@@ -81,8 +103,18 @@
                         <option value="down">По убыванию</option>
                     </select>
                 </div>
-                <label class="check"><input type="checkbox" id="showActive" checked> Активные</label>
-                <label class="check"><input type="checkbox" id="showInactive" checked> Неактивные</label>
+                <label class="check">
+                    <input type="checkbox"
+                           id="showActive"
+                           checked>
+                    Активные
+                </label>
+                <label class="check">
+                    <input type="checkbox"
+                           id="showInactive"
+                           checked>
+                    Неактивные
+                </label>
             </div>
 
             <div id="studentsList" class="students-list"></div>
@@ -104,12 +136,12 @@
             </p>
             <div class="delete-buttons">
                 <button id="deleteNo" 
-                        class="delete-btn no">
+                        class="delete-button no">
                         Отменить
                 </button>
                 <button id="deleteYes" 
-                        class="delete-btn yes">
-                    Удалить
+                        class="delete-button yes">
+                        Удалить
                 </button>
             </div>
         </div>
