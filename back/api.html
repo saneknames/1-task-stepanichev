@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student API Swagger</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+    <style>
+        html, body { margin: 0; padding: 0; }
+        body { background: #fafafa; }
+    </style>
+</head>
+<body>
+<div id="swagger-ui"></div>
+
+<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
+<script>
+    const spec = {
+        openapi: "3.0.3",
+        info: {
+            title: "Test API",
+            version: "1.0.0",
+            description: "Описание API для тестового задания"
+        },
+        servers: [
+            { url: "http://localhost:8080" }
+        ],
+        tags: [
+            { name: "Student" },
+            { name: "EntryTypes" }
+        ],
+        paths: {
+            "/student": {
+                get: {
+                    tags: ["Student"],
+                    summary: "Получить список студентов",
+                    responses: {
+                        "200": {
+                            description: "Список студентов",
+                            content: {
+                                "application/json": {}
+                            }
+                        }
+                    }
+                },
+                post: {
+                    tags: ["Student"],
+                    summary: "Создать студента",
+                    requestBody: {
+                        required: true,
+                        content: {
+                            "application/json": {
+                                example: {
+                                    lastName: "Васильев",
+                                    firstName: "Иван",
+                                    patronymic: "Иванович",
+                                    entryTypeId: 2,
+                                    averageScore: 22,
+                                    phone: "79998889999",
+                                    birthDate: "12/31/2025"
+                                }
+                            }
+                        }
+                    },
+                    responses: {
+                        "200": {
+                            description: "Студент создан"
+                        }
+                    }
+                }
+            },
+            "/student/{id}": {
+                patch: {
+                    tags: ["Student"],
+                    summary: "Обновить студента",
+                    parameters: [
+                        {
+                            name: "id",
+                            in: "path",
+                            required: true,
+                            description: "ID студента",
+                            schema: {
+                                type: "integer",
+                                example: 1
+                            }
+                        }
+                    ],
+                    requestBody: {
+                        required: true,
+                        content: {
+                            "application/json": {
+                                example: {
+                                    lastName: "Васильев",
+                                    firstName: "Иван",
+                                    patronymic: "Иванович",
+                                    entryTypeId: 2,
+                                    averageScore: 22,
+                                    phone: "79998889999",
+                                    birthDate: "12/31/2025"
+                                }
+                            }
+                        }
+                    },
+                    responses: {
+                        "200": {
+                            description: "Студент обновлён"
+                        }
+                    }
+                },
+                delete: {
+                    tags: ["Student"],
+                    summary: "Удалить студента",
+                    parameters: [
+                        {
+                            name: "id",
+                            in: "path",
+                            required: true,
+                            description: "ID студента",
+                            schema: {
+                                type: "integer",
+                                example: 1
+                            }
+                        }
+                    ],
+                    responses: {
+                        "200": {
+                            description: "Студент удалён",
+                            content: {
+                                "application/json": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "/entry-types": {
+                get: {
+                    tags: ["EntryTypes"],
+                    summary: "Получить типы набора",
+                    responses: {
+                        "200": {
+                            description: "Список типов набора",
+                            content: {
+                                "application/json": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    window.onload = () => {
+        SwaggerUIBundle({
+            spec,
+            dom_id: "#swagger-ui",
+            deepLinking: true,
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            layout: "BaseLayout",
+            tryItOutEnabled: true
+        });
+    };
+</script>
+</body>
+</html>
