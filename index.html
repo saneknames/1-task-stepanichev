@@ -33,7 +33,11 @@
                 <div class="field">
                     <label>Тип набора</label>
                     <select id="enrollmentType">
-                        <option value="" disabled selected hidden>Введите тип набора</option>
+                        <option value="" 
+                                disabled 
+                                selected 
+                                hidden>
+                                Введите тип набора</option>
                         <option value="1">Бюджетный</option>
                         <option value="2">Коммерция</option>
                         <option value="3">Целевой</option>
@@ -44,7 +48,6 @@
                     <input type="number"
                            step="0.1"
                            id="avgScore"
-                           min="2" max="5"
                            placeholder="Введите средний балл...">
                 </div>
                 <div class="field half">
@@ -117,7 +120,9 @@
                 </label>
             </div>
 
-            <div id="studentsList" class="students-list"></div>
+            <div id="studentsList" 
+                 class="students-list">
+            </div>
         </fieldset>
     </div>
 
@@ -136,11 +141,11 @@
             </p>
             <div class="delete-buttons">
                 <button id="deleteNo" 
-                        class="delete-button no">
+                        class="action-button cancel-button">
                         Отменить
                 </button>
                 <button id="deleteYes" 
-                        class="delete-button yes">
+                        class="action-button confirm-button">
                         Удалить
                 </button>
             </div>

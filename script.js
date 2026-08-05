@@ -18,7 +18,7 @@ const birthDateInput = document.getElementById('birthDate');
  * Загрузка списка студентов с сервера
  */
 async function loadStudents() {
-    const response = await fetch(API + '/student');
+    const response = await fetch(`${API}/student`);
     const data = await response.json();
     students = data.rows;
     showStudents();
@@ -28,7 +28,7 @@ async function loadStudents() {
  * Загрузка справочника типов набора с сервера
  */
 async function loadEntryTypes() {
-    const response = await fetch(API + '/entry-types');
+    const response = await fetch(`${API}/entry-types`);
     const data = await response.json();
     entryTypes = data.rows;
 }
@@ -38,11 +38,13 @@ async function loadEntryTypes() {
  * @param {object} student - данные студента
  */
 async function createStudent(student) {
-    await fetch(API + '/student', {
+    const response = await fetch(`${API}/student`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student)
     });
+    const data = await response.json();
+    return data.success;
 }
 
 /**
@@ -51,11 +53,13 @@ async function createStudent(student) {
  * @param {object} student - данные студента
  */
 async function updateStudent(id, student) {
-    await fetch(API + '/student/' + id, {
+    const response = await fetch(`${API}/student/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student)
     });
+    const data = await response.json();
+    return data.success;
 }
 
 /**
@@ -63,7 +67,9 @@ async function updateStudent(id, student) {
  * @param {number} id - идентификатор студента
  */
 async function removeStudent(id) {
-    await fetch(API + '/student/' + id, { method: 'DELETE' });
+    const response = await fetch(`${API}/student/${id}`, { method: 'DELETE' });
+    const data = await response.json();
+    return data.success;
 }
 
 /**
@@ -104,27 +110,33 @@ function startActions() {
             entryTypeId: Number(enrollmentType),
             averageScore: Number(avgScore),
             phone: phone.replace(/\D/g, ''),
-            birthDate: toApiDate(birthDate),
+            birthDate: toApiDate(birthDate)
         };
 
+        let success;
+
         if (!selectedStudentId) {
-            await createStudent(student);
+            success = await createStudent(student);
         } else {
-            await updateStudent(selectedStudentId, student);
+            success = await updateStudent(selectedStudentId, student);
         }
 
-        clearForm();
-        selectedStudentId = null;
-        saveButton.textContent = 'Добавить';
-        document.getElementById('formTitle').textContent = 'Добавление студента';
-        document.getElementById('cancelButton').style.display = 'none';
-        validateForm();
+        if (!success) {
+            return
+        }
+
+        resetForm();
         await loadStudents();
 
     });
 
     document.getElementById('deleteYes').addEventListener('click', async () => {
-        await removeStudent(selectedStudentId);
+        const success = await removeStudent(selectedStudentId);
+
+        if (!success) {
+            return
+        }
+
         document.getElementById('deleteWindow').classList.remove('show');
         selectedStudentId = null;
         await loadStudents();
@@ -141,12 +153,7 @@ function startActions() {
     });
 
     document.getElementById('cancelButton').addEventListener('click', () => {
-        clearForm();
-        selectedStudentId = null;
-        saveButton.textContent = 'Добавить';
-        document.getElementById('formTitle').textContent = 'Добавление студента';
-        document.getElementById('cancelButton').style.display = 'none';
-        validateForm();
+        resetForm();
     });
 
     lastNameInput.addEventListener('input', validateForm);
@@ -247,6 +254,18 @@ function clearForm() {
     avgScoreInput.value = '';
     phoneInput.value = '';
     birthDateInput.value = '';
+}
+
+/**
+ * Сброс формы в начальное состояние
+ */
+function resetForm() {
+    clearForm();
+    selectedStudentId = null;
+    saveButton.textContent = 'Добавить';
+    document.getElementById('formTitle').textContent = 'Добавление студента';
+    document.getElementById('cancelButton').style.display = 'none';
+    validateForm();
 }
 
 /**
@@ -401,12 +420,7 @@ function editStudent(id) {
  * @param {number} id - идентификатор выбранного студента
  */
 function deleteStudent(id) {
-    clearForm();
-    selectedStudentId = null;
-    saveButton.textContent = 'Добавить';
-    document.getElementById('formTitle').textContent = 'Добавление студента';
-    document.getElementById('cancelButton').style.display = 'none';
-
+    resetForm();
     selectedStudentId = id;
 
     for (let i = 0; i < students.length; i++) {
@@ -420,7 +434,14 @@ function deleteStudent(id) {
     document.getElementById('deleteWindow').classList.add('show');
 }
 
-loadEntryTypes();
-loadStudents();
+/**
+ * Первичная загрузка данных при запуске приложения
+ */
+async function init() {
+    await loadEntryTypes();
+    await loadStudents();
+}
+
+init();
 startActions();
 validateForm();

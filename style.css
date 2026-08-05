@@ -85,6 +85,33 @@ select {
     }
 }
 
+.action-button {
+    padding: 8px 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.confirm-button {
+    background: #2f6fdb;
+    border: none;
+    color: #fff;
+
+    &:hover {
+        background: #2558b3;
+    }
+}
+
+.cancel-button {
+    background: #fff;
+    border: 1px solid #999;
+    color: #333;
+
+    &:hover {
+        background: #f0f0f0;
+    }
+}
+
 .check {
     display: flex;
     align-items: center;
@@ -210,33 +237,6 @@ textarea::placeholder {
         display: flex;
         justify-content: flex-end;
         gap: 10px;
-
-        & .delete-button {
-            padding: 8px 24px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 13px;
-
-            &.no {
-                background: #fff;
-                border: 1px solid #999;
-                color: #333;
-
-                &:hover {
-                    background: #f0f0f0;
-                }
-            }
-
-            &.yes {
-                background: #2f6fdb;
-                border: none;
-                color: #fff;
-
-                &:hover {
-                    background: #2558b3;
-                }
-            }
-        }
     }
 }
 
